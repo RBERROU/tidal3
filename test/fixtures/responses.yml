@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  challenge: one
+  impact_materiality: 1
+  financial_materiality: 1
+
+two:
+  challenge: two
+  impact_materiality: 1
+  financial_materiality: 1

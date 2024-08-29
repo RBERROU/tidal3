@@ -1,0 +1,39 @@
+<h1>Sustainability Challenges</h1>
+
+<%= form_with model: @challenge, local: true do |form| %>
+  <div class="form-group">
+    <%= form.label :name %>
+    <%= form.text_field :name, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :description %>
+    <%= form.text_area :description, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :category %>
+    <%= form.select :category, options_for_select(['Environmental', 'Social', 'Governance']), { prompt: "Select Category" }, { class: 'form-control' } %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :subcategory %>
+    <%= form.select :subcategory, options_for_select(['E1', 'E2', 'E3', 'E4', 'E5', 'S1', 'S2', 'S3', 'S4', 'G1']), { prompt: "Select Subcategory" }, { class: 'form-control' } %>
+  </div>
+
+  <%= form.submit 'Add Challenge', class: 'btn btn-primary' %>
+<% end %>
+
+<h2>Existing Challenges</h2>
+
+<ul>
+  <% @challenges.each do |challenge| %>
+    <li>
+      <strong><%= challenge.name %></strong> - <%= challenge.category %> / <%= challenge.subcategory %>
+      <%= link_to 'Edit', edit_challenge_path(challenge), class: 'btn btn-secondary' %>
+      <%= link_to 'Delete', challenge_path(challenge), data: { "turbo-method": :delete, confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+    </li>
+  <% end %>
+</ul>
+
+<%= link_to 'Manage Stakeholders', stakeholders_path, class: 'btn btn-secondary' %>

@@ -1,0 +1,22 @@
+<h1>Questionnaire for <%= @stakeholder.name %></h1>
+
+<%= form_with url: engagement_submit_questionnaire_path(@stakeholder), method: :post, local: true do %>
+  <% @challenges.each do |challenge| %>
+    <div class="form-group">
+      <h3><%= challenge.name %></h3>
+      <p>How would you rate the impact materiality of <%= challenge.name %> on your company?</p>
+      <%= number_field_tag "stakeholder[responses][][impact_materiality]", 
+          @stakeholder.responses.find_by(challenge_id: challenge.id)&.impact_materiality, 
+          in: 1..10, step: 1, class: 'form-control' %>
+      
+      <p>How would you rate the financial materiality of <%= challenge.name %> on your company?</p>
+      <%= number_field_tag "stakeholder[responses][][financial_materiality]", 
+          @stakeholder.responses.find_by(challenge_id: challenge.id)&.financial_materiality, 
+          in: 1..10, step: 1, class: 'form-control' %>
+      
+      <%= hidden_field_tag "stakeholder[responses][][challenge_id]", challenge.id %>
+    </div>
+  <% end %>
+
+  <%= submit_tag 'Submit Questionnaire', class: 'btn btn-primary' %>
+<% end %>

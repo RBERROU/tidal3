@@ -1,0 +1,19 @@
+<h1>Upload a New Policy Document</h1>
+
+<%= form_with model: @policy_document, local: true do |form| %>
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :file %>
+    <%= form.file_field :file %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Upload Policy" %>
+  </div>
+<% end %>
+
+<%= link_to 'Back to Policy Documents', policy_documents_path %>

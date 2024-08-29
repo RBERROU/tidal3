@@ -1,0 +1,23 @@
+<h1>Uploaded Policy Documents</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>File</th>
+      <th>Uploaded At</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @policy_documents.each do |policy_document| %>
+      <tr>
+        <td><%= policy_document.title %></td>
+        <td><%= link_to 'Download', url_for(policy_document.file) %></td>
+        <td><%= policy_document.created_at.strftime("%B %d, %Y") %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'Upload a New Policy Document', new_policy_document_path %>

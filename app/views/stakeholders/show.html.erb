@@ -1,0 +1,15 @@
+<h1><%= @stakeholder.name %></h1>
+<p>Role: <%= @stakeholder.role %></p>
+<p>Category: <%= @stakeholder.category %></p>
+<p>Subcategory: <%= @stakeholder.subcategory %></p>
+
+<h2>Associated Challenges</h2>
+<ul>
+  <% @stakeholder.challenges.each do |challenge| %>
+    <li><%= link_to challenge.name, challenge_path(challenge) %></li>
+  <% end %>
+</ul>
+
+<%= link_to 'Edit', edit_stakeholder_path(@stakeholder), class: 'btn btn-secondary' %>
+<%= link_to 'Back to Stakeholders', stakeholders_path, class: 'btn btn-secondary' %>
+

@@ -1,0 +1,22 @@
+<h1>Stakeholders Management</h1>
+
+<%= link_to 'Add New Stakeholder', new_stakeholder_path, class: 'btn btn-primary' %>
+
+<h2>Existing Stakeholders</h2>
+<ul>
+  <% @stakeholders.each do |stakeholder| %>
+    <li>
+      <%= stakeholder.name %> - <%= stakeholder.category %> / <%= stakeholder.subcategory %>
+      <ul>
+        <% stakeholder.challenges.each do |challenge| %>
+          <li><%= challenge.name %></li>
+        <% end %>
+      </ul>
+      <%= link_to 'Edit', edit_stakeholder_path(stakeholder), class: 'btn btn-secondary' %>
+      <%= link_to 'Delete', stakeholder_path(stakeholder), data: { "turbo-method": :delete, confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+    </li>
+  <% end %>
+</ul>
+
+<%= link_to 'Back to Challenges', challenges_path, class: 'btn btn-secondary' %>
+<%= link_to 'Go to Engagements', engagements_path, class: 'btn btn-secondary mt-3' %>
