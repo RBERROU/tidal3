@@ -1,5 +1,5 @@
 require_relative "boot"
-
+require 'devise'
 require "rails/all"
 require "active_storage/engine"
 

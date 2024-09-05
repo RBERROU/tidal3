@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   get "policy_documents/new"
   get "policy_documents/create"
   get "policy_documents/index"
